@@ -1,24 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import FilaTarea from './components/filaTarea'
 
 function App() {
+
+  const [userName, setUserName] = useState("Leandro");
+  const [tareas, setTareas] = useState([
+    {name : "Tarea 1", done : false},
+    {name : "Tarea 2", done : false},
+    {name : "Tarea 3", done : false},
+    {name : "Tarea 4", done : false}
+  ]);
+
+  const updateTareas = () => {
+    alert("Hola");
+  }
+
+  const runTareas = () => {
+    return(
+      tareas.map(tarea => (
+        <FilaTarea tarea={tarea} key={tarea.name} change={updateTareas}/>
+      ))
+    )
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Hola {userName}</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Descripcion</th>
+            <th>Hecho</th>
+          </tr>
+        </thead>
+        <tbody>
+          {runTareas()}
+        </tbody>
+      </table>
     </div>
   );
 }

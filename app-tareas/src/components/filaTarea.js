@@ -7,7 +7,7 @@ const FilaTarea = (props) => {
               {props.tarea.name}
           </td>
           <td>
-              <input type="checkbox" checked={props.tarea.done} onChange={props.change}/>
+              <input type="checkbox" checked={props.tarea.done} onChange={() => props.change(props.tarea)}/>
           </td>
         </tr>
     )
